@@ -1,6 +1,6 @@
 import pandas as p
-def GetHistory(dataSet_path):
+def GetHistory(dataSet_path, enterDate):
     dataSet = p.read_csv(dataSet_path)
-    date = input("Enter date in format dd-mm-yy hh-mm-ss: ")
+    date = enterDate
     dataSetReq = (dataSet[(dataSet["isOnline"]==True) & (dataSet["Date"]==date) ]).shape[0]
-    print(dataSetReq)
+    return dataSetReq

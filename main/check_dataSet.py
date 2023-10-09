@@ -1,7 +1,7 @@
 import pandas as p
-def check():
+def check(inputPath):
     try:
-        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
+        dataSet_path = inputPath
         dataSet = p.read_csv(dataSet_path)
         print("DataSet loaded")
         return dataSet_path

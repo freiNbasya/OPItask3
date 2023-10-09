@@ -68,22 +68,33 @@ def main():
                     print(f"{user['nickname']} {phrases[0]}")
                 else:
                     status = UserStatus.get_status(user["lastSeenDate"], phrases)
-                    print(f"{user['nickname']} {phrases[15]} {status}")
+                    print(f"{user['nickname']} {phrases[1]} {status}")
 
     elif command == "3":
-        path = check()
-        GetHistory(path)
+        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
+        path = check(dataSet_path)
+        searchDate = input("Enter date in format dd-mm-yy hh-mm-ss: ")
+        print(GetHistory(path, searchDate))
 
     elif command == "4":
-        path = check()
-        GetHistorySpec(path)
+        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
+        path = check(path)
+        searchId = input("Enter user's id: ")
+        searchDate = input("Enter date in format dd-mm-yy hh:mm:ss: ")
+        print(GetHistorySpec(path, searchId, searchDate))
 
     elif command == "5":
-        path = check()
-        GetPrediction(path)
+        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
+        path = check(path)
+        input_date = input("Enter a date in dd-mm-yy hh:mm:ss format: ")
+        print(GetPrediction(path, input_date))
     elif command == "6":
-        path = check()
-        GetPredictionUser(path)
+        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
+        path = check(dataSet_path)
+        tolerance = input("Input acceptable tolerance: ")
+        searchId = input("Enter user's id: ")
+        searchDate = input("Enter date in format dd-mm-yy hh:mm:ss: ")
+        print(GetPredictionUser(path, searchId, searchDate, tolerance))
 
 if __name__ == "__main__":
     main()

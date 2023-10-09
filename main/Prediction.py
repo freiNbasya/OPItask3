@@ -1,10 +1,10 @@
 import pandas as p
 from datetime import datetime, timedelta
 
-def GetPrediction(path):
+def GetPrediction(path, getDate):
     df = p.read_csv(path)
 
-    input_date = input("Enter a date in dd-mm-yy hh-mm format: ")
+    input_date = getDate
 
     input_date = p.to_datetime(input_date, format="%d-%m-%Y %H:%M:%S")
 
@@ -17,6 +17,6 @@ def GetPrediction(path):
     
 
     if not filtered_df.empty:
-        print(f"Prediction {filtered_shape//number_of_groups}")
+        return f"Prediction {filtered_shape//number_of_groups}"
     else:
         print("No entries")
