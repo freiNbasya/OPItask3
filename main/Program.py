@@ -6,7 +6,11 @@ from GetHistorySpecUser import GetHistorySpec
 from Prediction import GetPrediction
 from check_dataSet import check
 from UserPredict import GetPredictionUser
+from removeUser import removeUser
+from avg import average
 import requests
+from totalTime import totalTime
+import csv
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -23,13 +27,16 @@ def get_users(offset):
     return users_response
 
 def main():
-    print("1 - update CSV, 2 - default, 3 - get historical data, 4 - get historical user data, 5 - prediction, 6 - prediction for user")
-    command = input()
+    print('1 - update CSV, 2 - default, 3 - get historical data, 4 - get historical user data, 5 - prediction, 6 - prediction for user,7 - remove users data, 8 - total time online for user, 9 - avg time online daily and weekly for user\n')
+    command = input('\n')
 
     if command == "1":
         total = 200
+        forbidden_users = set()
+        with open("C:/Labs_Kse/OPI/task3OPI/main/list_of_deleted.csv", "r") as f:
+            forbidden_users.update(line.strip() for line in f)
         output_file = Path("C:/Labs_Kse/OPI/task3OPI/main/outuput.csv")
-
+        
         with output_file.open(mode="w", encoding="utf-8") as sw:
             sw.write("id,Day,Date,LastSeen,isOnline\n")
 
@@ -39,8 +46,10 @@ def main():
                 now = datetime.now().strftime("%A,%d-%m-%Y %H:%M:%S")
                 
                 for user in users_response["data"]:
+                    if user['userId'] in forbidden_users:
+                        continue
                     if user['isOnline']:
-                        sw.write(f"{user['userId']},{now},None,{user['isOnline']}\n")
+                        sw.write(f"{user['userId']},{now},Nan,{user['isOnline']}\n")
                     else:
                         lastSeen = datetime.fromisoformat(user['lastSeenDate'])
                         lastSeen_norm = lastSeen.strftime("%d-%m-%Y %H:%M:%S")
@@ -95,6 +104,22 @@ def main():
         searchId = input("Enter user's id: ")
         searchDate = input("Enter date in format dd-mm-yy hh:mm:ss: ")
         print(GetPredictionUser(path, searchId, searchDate, tolerance))
+    elif command == "7":
+        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
+        path = check(dataSet_path)
+        searchId = input("Enter user's id: \n")
+        print(removeUser(dataSet_path, searchId))
+    elif command == "8":
+        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/testTotatTime.csv"
+        path = check(dataSet_path)
+        searchId = input("Enter user's id: \n")
+        print(totalTime(dataSet_path, searchId))
+    elif command == "9":
+        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/testAvg.csv"
+        path = check(dataSet_path)
+        searchId = input("Enter user's id: \n")
+        print(average(dataSet_path, searchId))
+        
 
 if __name__ == "__main__":
     main()
