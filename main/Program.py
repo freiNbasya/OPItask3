@@ -100,7 +100,7 @@ def main():
     elif command == "6":
         dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
         path = check(dataSet_path)
-        tolerance = input("Input acceptable tolerance: ")
+        tolerance = input("Input acceptable tolerance for prediction : ")
         searchId = input("Enter user's id: ")
         searchDate = input("Enter date in format dd-mm-yy hh:mm:ss: ")
         print(GetPredictionUser(path, searchId, searchDate, tolerance))
