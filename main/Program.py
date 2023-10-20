@@ -59,7 +59,7 @@ def main():
         total = 200
         phrases = []
 
-        print("Яку мову хочете обрати/What language you want to choose: 1 - Українська, 2 - English")
+        print("Яку мову хочете обрати/What language you want to choose: 1 - Українська/Ukranian, 2 - English/Англійська")
         input_lang = input()
         while input_lang not in ("1", "2"):
             print("Невірний ввід/Invalid input. Введіть 1 або 2/Enter 1 or 2.")
