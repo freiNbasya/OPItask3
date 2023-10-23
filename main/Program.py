@@ -13,6 +13,8 @@ from totalTime import totalTime
 import csv
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from buildReports import build
+from printReports import printReports
 
 
 
@@ -119,6 +121,17 @@ def main():
         path = check(dataSet_path)
         searchId = input("Enter user's id: \n")
         print(average(dataSet_path, searchId))
+    elif command == "10":
+        dataSet_path = "main/testAvg.csv"
+        path = check(dataSet_path)
+        choices = input('To enable metric input 1 or 0 to disable, separate choices with spaces')
+        return build(path, choices)
+    elif command == "11":
+        dataSet_path = "main/reportDataBase.csv"
+        path = check(dataSet_path)
+        return printReports(path)
+    
+    
         
 
 if __name__ == "__main__":

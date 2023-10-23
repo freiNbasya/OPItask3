@@ -1,8 +1,8 @@
 import pandas as p
-from avgReports import average
-from totalTimeReports import totalTime
-from MaxTimeMinTime import maximumTime
-from MaxTimeMinTime import minimumTime
+from main.avgReports import average
+from main.totalTimeReports import totalTime
+from main.MaxTimeMinTime import maximumTime
+from main.MaxTimeMinTime import minimumTime
 from pathlib import Path
 
 def build(path, choices):
