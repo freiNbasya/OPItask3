@@ -33,9 +33,9 @@ def main():
     if command == "1":
         total = 200
         forbidden_users = set()
-        with open("C:/Labs_Kse/OPI/task3OPI/main/list_of_deleted.csv", "r") as f:
+        with open("list_of_deleted.csv", "r") as f:
             forbidden_users.update(line.strip() for line in f)
-        output_file = Path("C:/Labs_Kse/OPI/task3OPI/main/outuput.csv")
+        output_file = Path("main/outuput.csv")
         
         with output_file.open(mode="w", encoding="utf-8") as sw:
             sw.write("id,Day,Date,LastSeen,isOnline\n")
@@ -80,42 +80,42 @@ def main():
                     print(f"{user['nickname']} {phrases[1]} {status}")
 
     elif command == "3":
-        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
+        dataSet_path = "main/outuput.csv"
         path = check(dataSet_path)
         searchDate = input("Enter date in format dd-mm-yy hh-mm-ss: ")
         print(GetHistory(path, searchDate))
 
     elif command == "4":
-        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
-        path = check(path)
+        dataSet_path = "main/outuput.csv"
+        path = check(dataSet_path)
         searchId = input("Enter user's id: ")
         searchDate = input("Enter date in format dd-mm-yy hh:mm:ss: ")
         print(GetHistorySpec(path, searchId, searchDate))
 
     elif command == "5":
-        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
-        path = check(path)
+        dataSet_path = "main/outuput.csv"
+        path = check(dataSet_path)
         input_date = input("Enter a date in dd-mm-yy hh:mm:ss format: ")
         print(GetPrediction(path, input_date))
     elif command == "6":
-        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
+        dataSet_path = "main/outuput.csv"
         path = check(dataSet_path)
         tolerance = input("Input acceptable tolerance for prediction : ")
         searchId = input("Enter user's id: ")
         searchDate = input("Enter date in format dd-mm-yy hh:mm:ss: ")
         print(GetPredictionUser(path, searchId, searchDate, tolerance))
     elif command == "7":
-        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/outuput.csv"
+        dataSet_path = "main/outuput.csv"
         path = check(dataSet_path)
         searchId = input("Enter user's id: \n")
         print(removeUser(dataSet_path, searchId))
     elif command == "8":
-        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/testTotatTime.csv"
+        dataSet_path = "main/testTotatTime.csv"
         path = check(dataSet_path)
         searchId = input("Enter user's id: \n")
         print(totalTime(dataSet_path, searchId))
     elif command == "9":
-        dataSet_path = "C:/Labs_Kse/OPI/task3OPI/main/testAvg.csv"
+        dataSet_path = "main/testAvg.csv"
         path = check(dataSet_path)
         searchId = input("Enter user's id: \n")
         print(average(dataSet_path, searchId))

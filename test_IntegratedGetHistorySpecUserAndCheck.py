@@ -1,10 +1,10 @@
 import unittest
-from GetHistorySpecUser import GetHistorySpec
-from check_dataSet import check
+from main.GetHistorySpecUser import GetHistorySpec
+from main.check_dataSet import check
 
 class Test(unittest.TestCase):
     def test_gettingOnline(self):
-        path = "C:/Labs_Kse/OPI/task3OPI/main/Users_dataGetHist.csv"
+        path = "main/Users_dataGetHist.csv"
         result_first = check(path)
         date = "09-10-2023 11:24:47"
         id = "8b0b5db6-19d6-d777-575e-915c2a77959a"
@@ -12,7 +12,7 @@ class Test(unittest.TestCase):
         
         self.assertEqual(result, "User is online")
     def test_gettingOffline(self):
-        path = "C:/Labs_Kse/OPI/task3OPI/main/Users_dataGetHist.csv"
+        path = "main/Users_dataGetHist.csv"
         result_first = check(path)
         date = "09-10-2023 11:24:47"
         id = "5ed4eae5-d93c-6b18-be47-93a787c83bcb"
