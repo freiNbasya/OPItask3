@@ -15,6 +15,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from buildReports import build
 from printReports import printReports
+from printReportsAvg import printReportsAvg
 
 
 
@@ -130,7 +131,10 @@ def main():
         dataSet_path = "main/reportDataBase.csv"
         path = check(dataSet_path)
         return printReports(path)
-    
+    elif command == "12":
+        dataSet_path = "main/reportDataBase.csv"
+        path = check(dataSet_path)
+        return printReportsAvg(path)
     
         
 
