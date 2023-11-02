@@ -16,6 +16,8 @@ from pathlib import Path
 from buildReports import build
 from printReports import printReports
 from printReportsAvg import printReportsAvg
+from PrintList import printList
+from checkUrl import check_Url
 
 
 
@@ -135,7 +137,9 @@ def main():
         dataSet_path = "main/reportDataBase.csv"
         path = check(dataSet_path)
         return printReportsAvg(path)
-    
+    elif command == "13":
+        url = check_Url(base_url)
+        return printList(url)
         
 
 if __name__ == "__main__":
